@@ -1,0 +1,13 @@
+<!-- Footer -->
+<footer id="footer">
+    <ul class="contact-icons">
+        {% if site.footer.social_links %}
+            {% for link in site.footer.social_links %}
+                <li class="icon {{ link.icon }}"><a href="{{ link.link_url }}">{{ link.text }}</a></li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+    <div class="copyright">
+        {{ site.footer.copyright }}
+    </div>
+</footer>

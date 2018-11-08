@@ -1,0 +1,43 @@
+title: Cascade
+baseurl: /
+menu:
+  actions:
+    - title: Sign Up
+      url: generic.md
+      is_primary: true
+    - title: Log In
+      url: generic.md
+      is_primary: false
+footer:
+  social_links:
+    - text: '1234 Fictional Street #5432 Nashville, TN 00000-0000'
+      icon: fa-map-marker
+      link_url: '#'
+    - text: (000) 000-0000
+      icon: fa-phone
+      link_url: '#'
+    - text: info@untitled.tld
+      icon: fa-envelope
+      link_url: '#'
+  copyright: '&copy; Cascade. All rights reserved.'
+palette: green
+palettes:
+  green:
+    sass:
+      accent1: '#51CCA8'
+      accent2: '#51B9CC'
+      accent3: '#5E92CC'
+      accent4: '#6E81D0'
+  purple:
+    sass:
+      accent1: '#946cc1'
+      accent2: '#6e9ff0'
+      accent3: '#5eb6df'
+      accent4: '#67cfc9'
+sass:
+  indentWidth: 4
+  style: nested
+  precision: 10
+plugins:
+  - jekyll-menus
+permalink: '/posts/:slug:output_ext'

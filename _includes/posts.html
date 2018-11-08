@@ -1,0 +1,25 @@
+<!-- Posts -->
+<section id="{{ include.section.section_id }}" class="wrapper">
+    <div class="inner">
+        <header class="major">
+            <h2>{{ include.section.title }}</h2>
+        </header>
+        <div class="posts">
+            {% assign arr = include.site.posts | sort: 'date' | reverse %}
+            {% for post in arr %}
+                <article>
+                    {% if post.home_image %}
+                        <a href="{{ post.url | relative_url }}" class="image"><img src="{{ post.home_image | relative_url }}" alt="" /></a>
+                    {% endif %}
+                    <div class="content">
+                        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+                        {{ post.excerpt | markdownify }}
+                        <ul class="actions special">
+                            <li><a href="{{ post.url | relative_url }}" class="button primary {{ post.home_button_color }}">Learn more</a></li>
+                        </ul>
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>

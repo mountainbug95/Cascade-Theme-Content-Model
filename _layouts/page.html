@@ -1,0 +1,18 @@
+---
+layout: body
+---
+
+    <!-- Main -->
+    <section id="main" class="wrapper">
+        <div class="inner">
+            
+            <header class="major">
+                <h1>{{ page.title }}</h1>
+            </header>
+            
+            {% if page.image %}
+                <span class="image main"><img src="{{ page.image | relative_url }}" alt="" /></span>
+            {% endif %}
+            {{ content }}
+        </div>
+    </section>

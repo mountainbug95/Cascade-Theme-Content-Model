@@ -1,0 +1,452 @@
+backend:
+  name: git-gateway
+  branch: master
+media_folder: uploads
+public_folder: /uploads
+collections:
+  - name: config
+    label: Config
+    files:
+      - name: config
+        label: Config
+        file: _config.yml
+        fields:
+          - name: title
+            label: Title
+            widget: text
+            required: true
+          - name: menu
+            widget: object
+            required: false
+            label: Menu
+            fields:
+              - name: actions
+                widget: list
+                required: false
+                label: Action Buttons
+                hint: List of action buttons shown under the menu items
+                fields:
+                  - name: title
+                    widget: string
+                    required: false
+                    label: Label
+                  - name: url
+                    widget: string
+                    required: false
+                    label: URL
+                  - name: is_primary
+                    widget: boolean
+                    required: false
+                    label: Is Primary
+                    default: false
+                    hint: Should the button have primary theme color
+          - name: footer
+            widget: object
+            required: false
+            label: Footer
+            fields:
+              - name: social_links
+                widget: list
+                required: false
+                label: Social Links
+                hint: List of social links
+                fields:
+                  - name: label
+                    widget: string
+                    required: false
+                    label: Text
+                  - name: icon
+                    widget: string
+                    required: false
+                    label: Icon
+                    hint: One of Font Awesome icons
+                  - name: link_url
+                    widget: string
+                    required: false
+                    label: URL
+              - name: copyright
+                widget: string
+                required: false
+                label: Copyright
+          - name: palette
+            widget: select
+            required: false
+            label: Palette
+            hint: Theme palette
+            options:
+              - green
+              - purple
+          - name: palettes
+            widget: hidden
+            required: false
+  - name: home
+    label: Home
+    files:
+      - name: home
+        label: Home
+        file: index.md
+        fields:
+          - name: layout
+            widget: hidden
+            required: true
+            label: Layout
+            default: home
+          - name: title
+            widget: string
+            required: true
+            label: Title
+          - name: banner
+            widget: object
+            required: false
+            label: Banner
+            fields:
+              - name: title
+                widget: text
+                required: true
+                label: Title
+              - name: subtitle
+                widget: markdown
+                required: false
+                label: subtitle
+              - name: actions
+                widget: list
+                required: false
+                label: Action Buttons
+                fields:
+                  - name: label
+                    widget: string
+                    required: true
+                    label: Label
+                  - name: url
+                    widget: string
+                    required: true
+                    label: URL
+                    default: '#'
+                  - name: is_primary
+                    widget: boolean
+                    required: false
+                    label: Is Primary
+                    default: false
+                  - name: is_scrolly
+                    widget: boolean
+                    required: false
+                    label: Is link to anchor
+                    default: false
+                    hint: >-
+                      Set to true if the action links to a section on the home
+                      page
+          - name: sections
+            widget: list
+            required: false
+            label: Sections
+            hint: Home Sections
+            types:
+              - name: spotlight
+                widget: object
+                label: Spotlight
+                fields:
+                  - name: component
+                    widget: hidden
+                    required: true
+                    label: Component
+                    default: spotlight.html
+              - name: carousel
+                widget: object
+                label: Carousel
+                fields:
+                  - name: title
+                    widget: string
+                    required: false
+                    label: Title
+                  - name: background_color_style
+                    widget: select
+                    required: false
+                    label: Background Color Style
+                    default: style4
+                    options:
+                      - style1
+                      - style2
+                      - style3
+                      - style4
+                  - name: section_id
+                    widget: string
+                    required: false
+                    label: Section ID
+                    hint: The section ID must be unique among all home sections
+                  - name: component
+                    widget: hidden
+                    required: true
+                    label: Component
+                    default: carousel.html
+              - name: posts
+                widget: object
+                label: Posts
+                fields:
+                  - name: title
+                    widget: string
+                    required: false
+                    label: Title
+                  - name: section_id
+                    widget: string
+                    required: false
+                    label: Section ID
+                    hint: The section ID must be unique among all home sections
+                  - name: component
+                    widget: hidden
+                    required: true
+                    label: Component
+                    default: posts.html
+              - name: cta
+                widget: object
+                label: Call to Action
+                fields:
+                  - name: title
+                    widget: string
+                    required: false
+                    label: Title
+                  - name: subtitle
+                    widget: markdown
+                    required: false
+                    label: Subtitle
+                  - name: style
+                    widget: select
+                    required: false
+                    label: Color Style
+                    default: style1
+                    options:
+                      - style1
+                      - style2
+                      - style3
+                      - style4
+                  - name: section_id
+                    widget: string
+                    required: false
+                    label: Section ID
+                    hint: The section ID must be unique among all home sections
+                  - name: component
+                    widget: hidden
+                    required: true
+                    label: Component
+                    default: cta.html
+  - name: page
+    label: Pages
+    folder: /
+    filter:
+      field: layout
+      value: page
+    create: true
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - name: layout
+        widget: hidden
+        required: true
+        label: Layout
+        default: page
+      - name: title
+        widget: string
+        required: true
+        label: Title
+      - name: image
+        widget: image
+        required: false
+        label: Image
+      - name: home_sections
+        widget: object
+        required: false
+        label: Home Sections
+        hint: Home sections to show this page in
+        fields:
+          - name: carousel
+            widget: object
+            required: false
+            label: Carousel
+            fields:
+              - name: enabled
+                widget: boolean
+                required: false
+                label: Enabled
+                default: false
+                hint: Show this page inside carousel section on the home page
+              - name: title
+                widget: string
+                required: false
+                label: Title
+              - name: text
+                widget: markdown
+                required: false
+                label: Text
+              - name: weight
+                widget: number
+                required: false
+                label: Weight
+                valueType: int
+              - name: image
+                widget: image
+                required: false
+                label: Image
+              - name: data_position
+                widget: select
+                required: false
+                label: Image Position
+                default: center center
+                options:
+                  - top left
+                  - top center
+                  - top right
+                  - center left
+                  - center center
+                  - center right
+                  - bottom left
+                  - bottom center
+                  - bottom right
+              - name: button_background_color
+                widget: select
+                required: false
+                label: Button Background Color
+                default: accent1
+                options:
+                  - accent1
+                  - accent2
+                  - accent3
+                  - accent4
+          - name: spotlight
+            widget: object
+            required: false
+            label: Spotlight
+            fields:
+              - name: enabled
+                widget: boolean
+                required: false
+                label: Enabled
+                default: false
+                hint: Show this page inside spotlight section on the home page
+              - name: section_id
+                widget: string
+                required: false
+                label: Section ID
+                hint: 'Section element ID, must be unique'
+              - name: title
+                widget: text
+                required: false
+                label: Title
+              - name: subtitle
+                widget: text
+                required: false
+                label: Subtitle
+              - name: text
+                widget: markdown
+                required: false
+                label: Text
+              - name: weight
+                widget: number
+                required: false
+                label: Weight
+                valueType: int
+              - name: image
+                widget: image
+                required: false
+                label: Image
+              - name: data_position
+                widget: select
+                required: false
+                label: Image Position
+                default: center center
+                options:
+                  - top left
+                  - top center
+                  - top right
+                  - center left
+                  - center center
+                  - center right
+                  - bottom left
+                  - bottom center
+                  - bottom right
+              - name: background_accent
+                widget: select
+                required: false
+                label: Background Color
+                default: accent1
+                options:
+                  - accent1
+                  - accent2
+                  - accent3
+                  - accent4
+              - name: button_accent
+                widget: select
+                required: false
+                label: Button Background Color
+                default: accent1
+                options:
+                  - accent1
+                  - accent2
+                  - accent3
+                  - accent4
+      - name: body
+        label: Content
+        widget: markdown
+  - name: post
+    label: Posts
+    folder: _posts
+    filter:
+      field: layout
+      value: page
+    create: true
+    extension: md
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - name: layout
+        widget: hidden
+        required: true
+        label: Layout
+        default: page
+      - name: title
+        widget: string
+        required: true
+        label: Title
+      - name: image
+        widget: image
+        required: false
+        label: Image
+      - name: excerpt
+        widget: markdown
+        required: false
+        label: Excerpt
+        hint: A short text that will be shown on the home page in posts list
+      - name: home_image
+        widget: image
+        required: false
+        label: Home Image
+        hint: An image that will be shown on the home page in posts list
+      - name: home_button_color
+        widget: select
+        required: false
+        label: Home Button Color
+        default: accent1
+        hint: >-
+          An accent color of the button shown on the home page in posts list
+          that links to this post
+        options:
+          - accent1
+          - accent2
+          - accent3
+          - accent4
+      - name: body
+        label: Content
+        widget: markdown
+  - name: elements
+    label: Elements
+    files:
+      - name: elements
+        label: Elements
+        file: elements.md
+        fields:
+          - name: layout
+            widget: hidden
+            required: true
+            label: Layout
+            default: elements
+          - name: title
+            widget: string
+            required: true
+            label: Title

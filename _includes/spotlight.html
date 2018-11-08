@@ -1,0 +1,21 @@
+{% assign arr = include.site.pages | where_exp: 'item', 'item.home_sections.spotlight.enabled == true' | sort: 'home_sections.spotlight.weight' %}
+{% for page in arr %}
+    {% if page.home_sections.spotlight %}
+        <!-- Spotlight -->
+        <article id="{{ page.home_sections.spotlight.section_id }}" class="spotlight {% cycle 'odd', 'even' %} {{ page.home_sections.spotlight.background_accent }}">
+            <div class="inner">
+                <div class="image" data-position="{{ page.home_sections.spotlight.data_position }}">
+                    <img src="{{ page.home_sections.spotlight.image | relative_url }}" alt="" />
+                </div>
+                <h2>{{ page.home_sections.spotlight.title | newline_to_br }}</h2>
+                <div class="content">
+                    <h3>{{ page.home_sections.spotlight.subtitle | newline_to_br }}</h3>
+                    {{ page.home_sections.spotlight.text | markdownify }}
+                    <ul class="actions">
+                        <li><a href="{{ page.url | relative_url }}" class="button primary {{ page.home_sections.spotlight.button_accent }}">Learn more</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    {% endif %}
+{% endfor %}
