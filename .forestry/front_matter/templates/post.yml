@@ -1,0 +1,52 @@
+---
+label: Post
+hide_body: false
+is_partial: false
+fields:
+  - type: text
+    name: layout
+    label: Layout
+    hidden: true
+    default: page
+    config:
+      required: true
+  - type: text
+    name: title
+    label: Title
+    config:
+      required: true
+  - type: file
+    name: image
+    label: Image
+  - type: textarea
+    name: excerpt
+    label: Excerpt
+    description: A short text that will be shown on the home page in posts list
+    config:
+      wysiwyg: true
+      schema:
+        format: markdown
+  - type: file
+    name: home_image
+    label: Home Image
+    description: An image that will be shown on the home page in posts list
+  - type: select
+    name: home_button_color
+    label: Home Button Color
+    description: >-
+      An accent color of the button shown on the home page in posts list that
+      links to this post
+    default: accent1
+    config:
+      source:
+        type: custom
+      options:
+        - accent1
+        - accent2
+        - accent3
+        - accent4
+pages:
+  - _posts/2017-04-01-post-01.md
+  - _posts/2017-04-02-post-02.md
+  - _posts/2017-04-03-post-03.md
+  - _posts/2017-04-04-post-04.md

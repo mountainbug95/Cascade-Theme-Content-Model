@@ -1,0 +1,70 @@
+---
+label: Home
+hide_body: true
+is_partial: false
+fields:
+  - type: text
+    name: layout
+    label: Layout
+    hidden: true
+    default: home
+    config:
+      required: true
+  - type: text
+    name: title
+    label: Title
+    config:
+      required: true
+  - type: field_group
+    name: banner
+    label: Banner
+    fields:
+      - type: textarea
+        name: title
+        label: Title
+        config:
+          required: true
+      - type: textarea
+        name: subtitle
+        label: subtitle
+        config:
+          wysiwyg: true
+          schema:
+            format: markdown
+      - type: field_group_list
+        name: actions
+        label: Action Buttons
+        config:
+          labelField: label
+        fields:
+          - type: text
+            name: label
+            label: Label
+            config:
+              required: true
+          - type: text
+            name: url
+            label: URL
+            default: '#'
+            config:
+              required: true
+          - type: boolean
+            name: is_primary
+            label: Is Primary
+            default: false
+          - type: boolean
+            name: is_scrolly
+            label: Is link to anchor
+            description: Set to true if the action links to a section on the home page
+            default: false
+  - type: blocks
+    name: sections
+    label: Sections
+    description: Home Sections
+    template_types:
+      - spotlight
+      - carousel
+      - posts
+      - cta
+pages:
+  - index.md

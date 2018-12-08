@@ -1,0 +1,37 @@
+---
+label: Call to Action
+is_partial: true
+fields:
+  - type: text
+    name: title
+    label: Title
+  - type: textarea
+    name: subtitle
+    label: Subtitle
+    config:
+      wysiwyg: true
+      schema:
+        format: markdown
+  - type: select
+    name: style
+    label: Color Style
+    default: style1
+    config:
+      source:
+        type: custom
+      options:
+        - style1
+        - style2
+        - style3
+        - style4
+  - type: text
+    name: section_id
+    label: Section ID
+    description: The section ID must be unique among all home sections
+  - type: text
+    name: component
+    label: Component
+    hidden: true
+    default: cta.html
+    config:
+      required: true

@@ -1,0 +1,30 @@
+---
+label: Carousel
+is_partial: true
+fields:
+  - type: text
+    name: title
+    label: Title
+  - type: select
+    name: background_color_style
+    label: Background Color Style
+    default: style4
+    config:
+      source:
+        type: custom
+      options:
+        - style1
+        - style2
+        - style3
+        - style4
+  - type: text
+    name: section_id
+    label: Section ID
+    description: The section ID must be unique among all home sections
+  - type: text
+    name: component
+    label: Component
+    hidden: true
+    default: carousel.html
+    config:
+      required: true

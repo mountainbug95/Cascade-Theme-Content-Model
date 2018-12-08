@@ -1,0 +1,11 @@
+---
+label: Spotlight
+is_partial: true
+fields:
+  - type: text
+    name: component
+    label: Component
+    hidden: true
+    default: spotlight.html
+    config:
+      required: true

@@ -16,16 +16,16 @@ banner:
       is_primary: false
 sections:
   - component: spotlight.html
-    widget: spotlight
+    template: spotlight
   - title: Sed adipiscing
     background_color_style: style4
     section_id: four
     component: carousel.html
-    widget: carousel
+    template: carousel
   - title: Ante libero
     section_id: five
     component: posts.html
-    widget: posts
+    template: posts
   - title: Tempus amet
     subtitle: >-
       Sed egestas, ante et vulputate lorem ipsum dolor sit amet nullam pede
@@ -34,7 +34,7 @@ sections:
     style: style1
     section_id: six
     component: cta.html
-    widget: cta
+    template: cta
 menus:
   main:
     title: Home

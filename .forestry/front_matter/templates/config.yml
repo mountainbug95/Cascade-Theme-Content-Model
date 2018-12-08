@@ -1,0 +1,99 @@
+---
+label: Config
+hide_body: true
+is_partial: false
+fields:
+  - type: text
+    name: title
+    label: Title
+    description: Site title
+    config:
+      required: true
+  - type: field_group
+    name: menu
+    label: Menu
+    fields:
+      - type: field_group_list
+        name: actions
+        label: Action Buttons
+        description: List of action buttons shown under the menu items
+        config:
+          labelField: title
+        fields:
+          - type: text
+            name: title
+            label: Label
+          - type: text
+            name: url
+            label: URL
+          - type: boolean
+            name: is_primary
+            label: Is Primary
+            description: Should the button have primary theme color
+            default: false
+  - type: field_group
+    name: footer
+    label: Footer
+    fields:
+      - type: field_group_list
+        name: social_links
+        label: Social Links
+        description: List of social links
+        config:
+          labelField: text
+        fields:
+          - type: text
+            name: label
+            label: Text
+          - type: text
+            name: icon
+            label: Icon
+            description: One of Font Awesome icons
+          - type: text
+            name: link_url
+            label: URL
+      - type: text
+        name: copyright
+        label: Copyright
+  - type: select
+    name: palette
+    label: Palette
+    description: Theme palette
+    config:
+      source:
+        type: custom
+      options:
+        - green
+        - purple
+  - type: field_group
+    name: palettes
+    hidden: true
+    fields:
+      - type: field_group
+        name: green
+        fields:
+          - type: field_group
+            name: sass
+            fields:
+              - type: text
+                name: accent1
+              - type: text
+                name: accent2
+              - type: text
+                name: accent3
+              - type: text
+                name: accent4
+      - type: field_group
+        name: purple
+        fields:
+          - type: field_group
+            name: sass
+            fields:
+              - type: text
+                name: accent1
+              - type: text
+                name: accent2
+              - type: text
+                name: accent3
+              - type: text
+                name: accent4
